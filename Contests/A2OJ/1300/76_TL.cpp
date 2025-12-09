@@ -15,6 +15,13 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n, m; cin >> n >> m;
+  vi N(n), M(m);
+  for (int& v : N) cin >> v;
+  for (int& v : M) cin >> v;
+  sort(N.begin(), N.end());
+  sort(M.begin(), M.end());
+  int v = max(N.back(), N.front() * 2);
+  cout << (v < M.front() && N.front() * 2 <= v ? v : -1);
   return 0;
 }

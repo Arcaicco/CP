@@ -15,6 +15,20 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  ll n; cin >> n;
+  int cnt = 0;
+  while (n) {
+    if (n % 10 == 7 || n % 10 == 4) cnt++;
+    n /= 10;
+  }
+
+  n = cnt;
+  if (n == 0) { cout << "NO"; return 0; }
+  bool valid = true;
+  while (n) {
+    if (n % 10 != 7 && n % 10 != 4) valid = false;
+    n /= 10;
+  }
+  cout << (valid ? "YES" : "NO");
   return 0;
 }

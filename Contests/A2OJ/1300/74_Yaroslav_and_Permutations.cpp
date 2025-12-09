@@ -15,6 +15,16 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  map<int, int> mp;
+  for (int i = 0; i < n; i++) {
+    int v; cin >> v; mp[v]++;
+  }
+  int mx = 0;
+  for (auto& [k, v] : mp)
+    mx = max(mx, v);
+
+  cout << (mx <= (n + 1) / 2 ? "YES" : "NO");
+
   return 0;
 }

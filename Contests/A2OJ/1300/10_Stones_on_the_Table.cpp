@@ -15,6 +15,15 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  string str; cin >> str;
+  char prev = 'a';
+  int ans = 0;
+  for (int i = 0; i < n; i++) {
+    char cur = str[i];
+    if (cur == prev) ans++;
+    prev = cur;
+  }
+  cout << ans;
   return 0;
 }

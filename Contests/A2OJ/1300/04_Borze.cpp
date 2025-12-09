@@ -15,6 +15,14 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  string s; cin >> s;
+  vi ans;
+  for (int i = 0; i < s.size(); i++) {
+    if (s[i] == '.') { ans.push_back(0); continue; }
+    else if (s[i] == '-' && s[i + 1] == '.') ans.push_back(1);
+    else ans.push_back(2);
+    i++;
+  }
+  for (int& v : ans) cout << v;
   return 0;
 }

@@ -15,6 +15,11 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  if (n & 1) { cout << -1; return 0; }
+  for (int i = 2; i <= n; i += 2) {
+    cout << i << ' ' << i - 1 << ' ';
+  }
+
   return 0;
 }

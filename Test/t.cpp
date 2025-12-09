@@ -1,37 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void solve() {
+    int n, l, r;
+    cin >> n >> l >> r;
+
+    // Vamos a imprimir los valores de 'a' directamente sin guardar el vector completo.
+    // Necesitamos recordar el valor del prefijo anterior (prev_b).
+    // Inicialmente b_0 = 0.
+    int prev_b = 0; 
+
+    for(int i = 1; i <= n; i++) {
+        int curr_b;
+
+        // APLICAMOS LA LÓGICA DEL EDITORIAL:
+        if (i == r) {
+            // "with the exception that b_r = l - 1"
+            curr_b = l - 1;
+        } else {
+            // "The easiest construction is b_i = i"
+            curr_b = i;
+        }
+
+        // "The array a can be reconstructed as a_i = b_i XOR b_{i-1}"
+        cout << (curr_b ^ prev_b) << (i == n ? "" : " ");
+
+        // Actualizamos el anterior para la siguiente iteración
+        prev_b = curr_b;
+    }
+    cout << "\n";
+}
+
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
-        
-        vector<int> freq(2 * n + 2, 0);   // un poco más grande por seguridad
-        for (int i = 0; i < 2 * n; i++) {
-            int x;
-            cin >> x;
-            freq[x]++;
-        }
-        
-        int ans = 0;
-        for (int i = 1; i <= 2 * n; i++) {
-            if (freq[i] == 0) continue;
-            
-            // Siempre podemos hacer que aparezca impar en al menos una subsecuencia → +1
-            ans++;
-            
-            // Solo si la frecuencia es PAR y >=2 podemos hacerlo impar en AMBAS → +1 extra
-            if (freq[i] >= 2 && freq[i] % 2 == 0) {
-                ans++;
-            }
-        }
-        
-        cout << ans << '\n';
+        solve();
     }
     return 0;
 }

@@ -15,6 +15,13 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  double sum = 0;
+  for (int i = 0; i < n; i++) {
+    int v; cin >> v;
+    sum += v;
+  }
+  double ans = sum / n;
+  cout << fixed << setprecision(4) << ans;
   return 0;
 }

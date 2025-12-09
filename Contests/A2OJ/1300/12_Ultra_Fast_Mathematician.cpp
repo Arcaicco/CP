@@ -15,6 +15,14 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  string sa, sb; cin >> sa >> sb;
+  int n = (int)sa.size();
+  int ans[(int)sa.size()];
+  for (int i = 0; i < (int)sa.size(); i++) {
+    int a = sa[i] - '0';
+    int b = sb[i] - '0';
+    ans[i] = a ^ b;
+  }
+  for (int i = 0; i < n; i++) cout << ans[i];
   return 0;
 }

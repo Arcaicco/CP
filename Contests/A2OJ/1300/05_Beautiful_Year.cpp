@@ -15,6 +15,19 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  while (n++) {
+    vi arr;
+    int v = n;
+    while (v) {
+      arr.push_back(v % 10);
+      v /= 10;
+    }
+    sort(arr.begin(), arr.end());
+    auto it = unique(arr.begin(), arr.end());
+    if (it == arr.end()) {
+      cout << n; break;
+    }
+  }
   return 0;
 }

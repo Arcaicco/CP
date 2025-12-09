@@ -15,6 +15,13 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  int a, b, c; a = b = c = 0;
+  while (n--) {
+    int x, y, z; cin >> x >> y >> z;
+    a += x, b += y, c += z;
+  }
+  cout << (a == 0 && b == 0 && c == 0 ? "YES" : "NO");
+
   return 0;
 }

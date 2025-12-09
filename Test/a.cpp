@@ -13,43 +13,33 @@ const ll LLINF = 1e18;
 const int MOD = 1e9 + 7;
 const double EPS = 1e-9;
 
-const int N = 5;
-
-vvi mat(N, vi(N));
-vi arr = {1, 2, 3, 4, 5};
-ll ans = 0;
-
-ll f() {
-  ll sum = 0;
-  for (int i = 0; i < N; i++) 
-    for (int j = i + 1; j < N; j+= 2) {
-      int a = arr[j] - 1, b = arr[j - 1] - 1;
-      sum += mat[a][b] + mat[b][a];
-    }
-  return sum;
-}
-
-void bf(int e) {
-  if (e == N) {
-    ans = max(ans, f());
-    return;
-  }
-  for (int i = e; i < N; i++) {
-    swap(arr[i], arr[e]);
-    bf(e + 1);
-    swap(arr[i], arr[e]);
-  }
-}
-
-
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  for (int i = 0; i < N; i++)
-    for (int j = 0; j < N; j++)
-      cin >> mat[i][j];
+  int t; cin >> t;
+  while (t--) {
+    string s; cin >> s;
+    int ans = 0;
+    if (s.find("**") != string::npos) ans = -1;
+    if (s.find("*<") != string::npos) ans = -1;
+    if (s.find(">*") != string::npos) ans = -1;
+    if (s.find("><") != string::npos) ans = -1;
 
-  bf(0);
-  cout << ans;
-
+    if (ans == -1) { cout << -1 << '\n'; continue; }
+    
+    int l = 0, r = (int) s.size() - 1;
+    int cnt_l = 0, cnt_r = 0;
+    while (l < (int) s.size()) {
+      if (s[l] == '>') break;
+      l++;
+      cnt_l++;
+    }
+    while (r >= 0) {
+      if (s[r] == '<') break;
+      r--;
+      cnt_r++;
+    }
+    //cout << l << ' ' << r << '\n';
+    cout << max(cnt_l, cnt_r) << '\n';
+  }
   return 0;
 }

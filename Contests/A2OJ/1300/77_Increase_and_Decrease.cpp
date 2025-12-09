@@ -15,6 +15,20 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n; cin >> n;
+  vi arr(n);
+  ll sum = 0;
+  for (int& v : arr) {
+    cin >> v;
+    sum += v;
+  }
+  int m = sum / n;
+  int val = arr.back();
+  for (int i = 0; i < n - 1; i++) {
+    if (m > arr[i]) val = val - (m - arr[i]);
+    else val = val + (arr[i] - m);
+  }
+  cout << (val == m ? n : n - 1);
+
   return 0;
 }

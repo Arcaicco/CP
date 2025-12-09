@@ -15,6 +15,15 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int y, k, n; cin >> y >> k >> n;
+  vi ans;
+  for (int i = k; i <= n; i += k) {
+    if (i <= y) continue;
+    ans.push_back(i - y);
+  }
+  if (ans.empty()) { cout << -1; return 0; }
+
+  for (int& v : ans) cout << v << ' ';
+
   return 0;
 }

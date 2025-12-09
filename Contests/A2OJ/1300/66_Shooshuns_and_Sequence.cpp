@@ -15,6 +15,15 @@ const double EPS = 1e-9;
 
 int main() {
   ios::sync_with_stdio(0); cin.tie(0);
-  
+  int n, k; cin >> n >> k;
+  vi arr(n);
+  for (int& v : arr) cin >> v;
+  int v = arr[k - 1];
+  int ans = 0;
+  for (int i = 0; i < n; i++)
+    if (v != arr[i]) 
+      ans = i + 1;
+  if (ans > k) { cout << -1; return 0; }
+  cout << ans;
   return 0;
 }
