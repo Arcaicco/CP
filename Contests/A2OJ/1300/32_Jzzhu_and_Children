@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> ii;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<ii> vii;
+typedef vector<vi> vvi;
+
+const int INF = 1e9;
+const ll LLINF = 1e18;
+const int MOD = 1e9 + 7;
+const double EPS = 1e-9;
+
+struct Val {
+  int cur, exp, idx;
+};
+
+int main() {
+  ios::sync_with_stdio(0); cin.tie(0);
+  int n, m; cin >> n >> m;
+  deque<Val> dqu(n);
+  for (int i = 0; i < n; i++) {
+    int v; cin >> v;
+    dqu[i] = {0, v, i + 1};
+  }
+  int ans = 0;
+  while (!dqu.empty()) {
+    dqu.front().cur += m;
+    Val nval = dqu.front();
+    ans = nval.idx;
+    dqu.pop_front();
+    if (nval.cur < nval.exp) dqu.push_back(nval);
+  }
+  cout << ans << '\n';
+
+
+  return 0;
+}
